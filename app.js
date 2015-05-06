@@ -7,7 +7,7 @@ window.addEventListener("load", function () {
 	var playerOneWins;
 	var playerTwoWins;
 	var rebel = "Three cheers for the Rebels. They have proven victorious over the Dark Side! Click reset to play again!";
-	var dark = "The Dark Side has proven victorious once again. Perhaps with some better Jedi training you may prevail next time around. Click reset to play again! Click reset to play again!";
+	var dark = "The Dark Side has proven victorious once again. Perhaps with some better Jedi training you may prevail next time around. Click reset to play again!";
 
 	var box1 = document.querySelector("#box1");
 	var box2 = document.querySelector("#box2");
@@ -74,7 +74,7 @@ window.addEventListener("load", function () {
 	}
 
 	board.addEventListener("click", function (event) {
-		if (event.target.classList.contains("clicked") === false && gameOver === false){
+		if (event.target.classList.contains("clicked") === false && gameOver === false && event.target.classList.contains("box")){
 			if (turns % 2 === 0){
 				event.target.style.backgroundImage = "url('assets/luke.png')";
 				event.target.classList.add("Player1");

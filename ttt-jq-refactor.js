@@ -6,6 +6,9 @@ $(window).load(function() {
 	var $turns = 0;
 	//var reset = document.querySelector('#reset');
 	var $gameOver = false;
+	var $playerOneScore = 0;
+	var $playerTwoScore = 0;
+
 
 	// var rebel = "Three cheers for the Rebels. They have proven victorious over the Dark Side! Click reset to play again!";
 	// var dark = "The Dark Side has proven victorious once again. Perhaps with some better Jedi training you may prevail next time around. Click reset to play again!";
@@ -30,6 +33,26 @@ $(window).load(function() {
 	var $box7 = $("#box7");
 	var $box8 = $("#box8");
 	var $box9 = $("#box9");
+
+	var $setwinner = function(player){
+		if (player == 1){
+			$playerOneScore += 1;
+			alert($rebel);
+		} else {
+			$playerTwoScore += 1;
+			alert($dark);
+		}
+		return $gameOver = true;
+	}
+
+	var $resetGame = function(){
+		var $resetBox = $(".clicked");
+		$resetBox.css("backgroundImage", "url('')");
+		$resetBox.removeClass("Player1").removeClass("Player2").removeClass("clicked");
+		$turns = 0;
+		$gameOver = false;
+	}
+
 
     // I'll admit this code is horrendous, and perhaps even vomit inducing...
 	// var checkWinner = function(){
@@ -91,64 +114,50 @@ $(window).load(function() {
 	var $checkWinnerOne = function(){
 		//Check row 1 for player1
 		if ($box1.hasClass("Player1") && $box2.hasClass("Player1") && $box3.hasClass("Player1")) {
-			alert($rebel);
-			return $gameOver = true;
+			return $setwinner(1);
 		//Check row 2 for player1
 		} else if ($box4.hasClass("Player1") && $box5.hasClass("Player1") && $box6.hasClass("Player1")) {
-			alert($rebel);
-			return $gameOver = true;
+			return $setwinner(1);
 		//Check row 3 for player1
 		} else if ($box7.hasClass("Player1") && $box8.hasClass("Player1") && $box9.hasClass("Player1")) {
-			alert($rebel);
-			return $gameOver = true;		
+			return $setwinner(1);		
 		//Check column 1 for player1
 		} else if ($box1.hasClass("Player1") && $box4.hasClass("Player1") && $box7.hasClass("Player1")) {
-			alert($rebel);
-			return $gameOver = true;
+			return $setwinner(1);
 		//Check column 2 for player1
 		} else if ($box2.hasClass("Player1") && $box5.hasClass("Player1") && $box8.hasClass("Player1")) {
-		 	alert($rebel);
-			return $gameOver = true;
+		 	return $setwinner(1);
 		//Check column 3 for player1
 		} else if ($box3.hasClass("Player1") && $box6.hasClass("Player1") && $box9.hasClass("Player1")) {
-			alert($rebel);
-			return $gameOver = true;
+			return $setwinner(1);
 		//Check Diagonals 1 for player1
 		} else if ($box1.hasClass("Player1") && $box5.hasClass("Player1") && $box9.hasClass("Player1") || $box3.hasClass("Player1") && $box5.hasClass("Player1") && $box7.hasClass("Player1")) {
-			alert($rebel);
-			return $gameOver = true;
+			return $setwinner(1);
 		};
 	};
 
 	var $checkWinnerTwo = function(){
 		//Check row1 player2
 		if ($box1.hasClass("Player2") && $box2.hasClass("Player2") && $box3.hasClass("Player2")) {
-			alert($dark);
-			return $gameOver = true;
+			return $setwinner();
 		//Check row2 player2	
 		} else if ($box4.hasClass("Player2") && $box5.hasClass("Player2") && $box6.hasClass("Player2")) {
-			alert($dark);
-			return $gameOver = true;
+			return $setwinner();
 		//Check row3 player2
 		} else if ($box7.hasClass("Player2") && $box8.hasClass("Player2") && $box9.hasClass("Player2")) {
-			alert($dark);
-			return $gameOver = true;
+			return $setwinner();
 		//Check column 1 player 2	
 		} else if ($box1.hasClass("Player2") && $box4.hasClass("Player2") && $box7.hasClass("Player2")) {
-			alert($dark);
-			$gameOver = true;
+			return $setwinner();
 		//Check middle player2
 		} else if ($box2.hasClass("Player2") && $box5.hasClass("Player2") && $box8.hasClass("Player2")) {
-			alert($dark);
-			return $gameOver = true;
+			return $setwinner();
 		//check column 3 player2
 		} else if ($box3.hasClass("Player2") && $box6.hasClass("Player2") && $box9.hasClass("Player2")) {
-			alert($dark);
-			return $gameOver = true;
+			return $setwinner();
 		//Check Diagonals player2
 		} else if ($box1.hasClass("Player2") && $box5.hasClass("Player2") && $box9.hasClass("Player2") || $box3.hasClass("Player2") && $box5.hasClass("Player2") && $box7.hasClass("Player2")) {
-			alert($dark);
-			return $gameOver = true;
+			return $setwinner();
 		};
 	};
 
@@ -179,12 +188,8 @@ $(window).load(function() {
 	$('#reset').click(function (event) {	
 		//for (var i = 0; i < isClicked.length; i++) {
 			//var resetBox = document.querySelector(".clicked");
-			var $resetBox = $(".clicked");
-			//resetBox.style.backgroundImage = "url('')";
-			$resetBox.css("backgroundImage", "url('')");
+			//resetBox.style.backgroundImage = "url('')";			
 			//resetBox.className = "box";
-			$resetBox.removeClass("Player1").removeClass("Player2").removeClass("clicked");
-			$turns = 0;
-			$gameOver = false;
+			return $resetGame();
 	});
 });

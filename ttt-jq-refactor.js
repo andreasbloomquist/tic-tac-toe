@@ -37,10 +37,13 @@ $(window).load(function() {
 	var $setwinner = function(player){
 		if (player == 1){
 			$playerOneScore += 1;
+			$('#player1').html("Player one score: " + $playerOneScore);
 			alert($rebel);
 		} else {
 			$playerTwoScore += 1;
+			$('#player2').html("Player two score: " + $playerTwoScore);
 			alert($dark);
+
 		}
 		return $gameOver = true;
 	}

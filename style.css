@@ -3,6 +3,8 @@ body {
   background-position: center;
   margin: 0 auto;
   background-color: #000000;
+  font-family: 'Play', sans-serif;
+
 }
 
 #logo {
@@ -40,12 +42,17 @@ button {
   margin-bottom: 1em;
   color: #3b3b3b;
   border: none;
-  font-family: 'Play', sans-serif;
   font-size: 2em;
+  font-family: 'Play', sans-serif;
+
 }
 button:hover { 
     background-color: #FFCC00;
 }
 .box:hover {
   background-color: #AFEEEE;
+}
+
+.score {
+  color: #FFCC00;
 }
